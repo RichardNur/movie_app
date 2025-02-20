@@ -6,6 +6,9 @@ The **MovieApp** is a Python-based application that allows users to manage their
 
 ## ✨ Features
 
+1. Maintain your personal Movie Database
+2. View the Movies and Details in the web Browser, using index.html
+
 - **Add Movies**: Add a movie to your database with details fetched from the OMDb API.
 - **List Movies**: View all movies in your collection along with their ratings and release years.
 - **Delete Movies**: Remove movies that you no longer want in your database.
