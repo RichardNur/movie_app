@@ -1,5 +1,4 @@
-from movie_project.storage.istorage import IStorage
-
+from .istorage import IStorage
 
 class StorageCSV(IStorage):
     """

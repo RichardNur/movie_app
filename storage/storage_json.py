@@ -1,6 +1,5 @@
-from movie_project.storage.istorage import IStorage
+from .istorage import IStorage
 import json
-
 
 class StorageJson(IStorage):
     """
