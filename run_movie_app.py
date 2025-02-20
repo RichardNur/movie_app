@@ -1,6 +1,6 @@
-from movie_app import MovieApp
-from storage_json import StorageJson
-from storage_csv import StorageCSV
+from movie_project.movie_app.app import MovieApp
+from movie_project.storage.storage_json import StorageJson
+from movie_project.storage.storage_csv import StorageCSV
 
 
 def main():
@@ -12,14 +12,14 @@ def main():
     """
 
     # csv:
-    # storage = StorageCSV('movies.csv')
-    # movie_app = MovieApp(storage)
-    # movie_app.run()
-
-    # json:
-    storage = StorageJson('movies.json')
+    storage = StorageCSV('data/movies.csv')
     movie_app = MovieApp(storage)
     movie_app.run()
+
+    # json:
+    # storage = StorageJson('data/movies.json')
+    # movie_app = MovieApp(storage)
+    # movie_app.run()
 
 
 if __name__ == "__main__":

@@ -1,24 +1,21 @@
-from istorage import IStorage
+from movie_project.storage.istorage import IStorage
+import json
 
 
-class StorageCSV(IStorage):
+class StorageJson(IStorage):
     """
-    Class for managing movies in csv file format.
+    Class for managing movies in JSON file format.
     Implements methods for interacting with the movies database (db).
     """
 
     def __init__(self, file_path):
-        self._file_path = file_path
         try:
             with open(file_path, 'r') as file:
-                data_list = file.readlines()[1:]
+                movies = json.load(file)
         except FileNotFoundError:
-            data_list = []
+            movies = {}
 
-        movies = {}
-        for movie in data_list:
-            title, rating, year, poster = movie.split(',')
-            movies[title] = {'rating': rating, 'release': int(year), 'poster': poster.strip()}
+        self._file_path = file_path
         self.movies = movies
 
 
@@ -29,22 +26,20 @@ class StorageCSV(IStorage):
 
     def save_movies(self, new_movies):
         ''' writes the movies.json-file to the file '''
-
         with open(self._file_path, 'w') as file:
-            for movie in new_movies:
-                file.write(f"{movie},{new_movies[movie]['rating']},{new_movies[movie]['release']},{new_movies[movie]['poster']}\n")
+            json.dump(new_movies, file)
 
 
     def add_movie(self, title, rating, year, poster=None):
         """
         Adds a movie to the movies db.
         Loads the information from the JSON file, add the movie,
-        and saves it. The function doesn't need to validate the input.'
+        and saves it. The function doesn't need to validate the input.
         """
-
         self.movies[title] = {'rating': rating, 'release': year, 'poster': poster}
         self.save_movies(self.movies)
         print(f"'{title}' added successfully to db!")
+
 
 
     def delete_movie(self, title):

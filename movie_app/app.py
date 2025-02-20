@@ -196,7 +196,7 @@ class MovieApp:
         movies = self._storage.list_movies()
 
         # read index_template
-        with open("index_template.html", "r") as file:
+        with open("html_content/index_template.html", "r") as file:
             html_template = file.read()
 
         # generate content
@@ -225,7 +225,7 @@ class MovieApp:
         html_content_new = html_template.replace(placeholder, content)
 
         # write new content to index.html
-        with open("index.html", "w") as file:
+        with open("html_content/index.html", "w") as file:
             file.write(html_content_new)
 
         print("New website generated successfully!")
