@@ -1,5 +1,5 @@
 from movie_app.app import MovieApp
-from movie_project.storage.storage_json import StorageJson
+from storage.storage_json import StorageJson
 from storage.storage_csv import StorageCSV
 
 
